@@ -45,5 +45,3 @@ Contributions are welcome! If you have any ideas, suggestions, or issues, feel f
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
-
-This simple calculator is a great starting point for learning Python and the Kivy framework, and it can be easily extended with more features and functionalities. Happy coding!
