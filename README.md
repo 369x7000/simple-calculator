@@ -1,3 +1,3 @@
 # simple-calculator
 
-This is a simple calculator create with Kivy framework.
+This is a simple calculator created with Kivy framework.
