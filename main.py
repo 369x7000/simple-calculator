@@ -9,6 +9,7 @@ class MyApp(App):
         self.operators = ["/", "*", "+", "-"]
         self.last_was_operator = None
         self.last_button = None
+        self.division_by_zero = False  # divided by zero flag ->(false)
         main_layout = BoxLayout(orientation="vertical")
         self.solution = TextInput(
             multiline=False, readonly=True, halign="right", font_size=50
@@ -40,19 +41,23 @@ class MyApp(App):
         return main_layout
 
     def on_button_press(self, instance):
+        if self.division_by_zero:
+            self.solution.text = ""
+            self.division_by_zero = False
+
         current = self.solution.text
         button_text = instance.text
 
         if button_text == "C":
-            # Clear the solution widget
+            # clear the board
             self.solution.text = ""
         else:
             if current and (
                 self.last_was_operator and button_text in self.operators):
-                # Don't add two operators right after each other
+                # don't add 2 operators in a row
                 return
             elif current == "" and button_text in self.operators:
-                # First character cannot be an operator
+                # start with an operator only
                 return
             else:
                 new_text = current + button_text
@@ -66,9 +71,11 @@ class MyApp(App):
             try:
                 solution = str(eval(self.solution.text))
                 self.solution.text = solution
-            except Exception as e:
-                self.solution.text = "Error..."
-
+            except ZeroDivisionError:
+                self.solution.text = "Cannot divide by zero"
+                self.division_by_zero = True # divided by zero flag ->(true)
+            except Exception:
+                self.solution.text = "Error"
 
 if __name__ == "__main__":
     app = MyApp()
