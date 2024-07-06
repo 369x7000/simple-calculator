@@ -4,16 +4,14 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
-class MyApp(App):
+class SimpleCalculator(App):
     def build(self):
         self.operators = ["/", "*", "+", "-"]
         self.last_was_operator = None
         self.last_button = None
         self.division_by_zero = False  # divided by zero flag ->(false)
         main_layout = BoxLayout(orientation="vertical")
-        self.solution = TextInput(
-            multiline=False, readonly=True, halign="right", font_size=50
-        )
+        self.solution = TextInput(multiline=False, readonly=True, halign="right", font_size=50)
         main_layout.add_widget(self.solution)
         buttons = [
             ["7", "8", "9", "/"],
@@ -24,10 +22,7 @@ class MyApp(App):
         for row in buttons:
             h_layout = BoxLayout()
             for label in row:
-                button = Button(
-                    text=label,
-                    pos_hint={"center_x": 0.5, "center_y": 0.5},
-                )
+                button = Button(text=label,pos_hint={"center_x": 0.5, "center_y": 0.5},)
                 button.bind(on_press=self.on_button_press)
                 h_layout.add_widget(button)
             main_layout.add_widget(h_layout)
@@ -49,16 +44,17 @@ class MyApp(App):
         button_text = instance.text
 
         if button_text == "C":
-            # clear the board
+            # reset
             self.solution.text = ""
+            self.last_operator = ""
+            self.last_result = None
         else:
-            if current and (
-                self.last_was_operator and button_text in self.operators):
+            if current and (self.last_was_operator and button_text in self.operators):
                 # don't add 2 operators in a row
                 return
             elif current == "" and button_text in self.operators:
-                # start with an operator only
-                return
+                # cannot start with operator
+                return     
             else:
                 new_text = current + button_text
                 self.solution.text = new_text
@@ -76,7 +72,7 @@ class MyApp(App):
                 self.division_by_zero = True # divided by zero flag ->(true)
             except Exception:
                 self.solution.text = "Error"
-
+                
 if __name__ == "__main__":
-    app = MyApp()
+    app = SimpleCalculator()
     app.run()
