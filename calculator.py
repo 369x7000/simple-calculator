@@ -27,9 +27,7 @@ class SimpleCalculator(App):
                 h_layout.add_widget(button)
             main_layout.add_widget(h_layout)
 
-        equals_button = Button(
-            text="=", pos_hint={"center_x": 0.5, "center_y": 0.5}
-        )
+        equals_button = Button(text="=", pos_hint={"center_x": 0.5, "center_y": 0.5})
         equals_button.bind(on_press=self.on_solution)
         main_layout.add_widget(equals_button)
 

@@ -35,6 +35,7 @@ python main.py
 
 - **Python 3.6+**
 - **Kivy 2.0.0+**
+- **TKinter 8.6**
 
 ## License
 
