@@ -40,32 +40,32 @@ def perform_conversion():
     except ValueError:
         messagebox.showerror("Error", "Please enter a valid amount.")
 
-# Set up the GUI
+# GUI
 root = tk.Tk()
 root.title("Currency Converter")
 
-# Amount Entry
+# Amount
 tk.Label(root, text="Enter the amount to be converted:").grid(row=0, column=0, padx=10, pady=10)
 amount_entry = tk.Entry(root)
 amount_entry.grid(row=0, column=1, padx=10, pady=10)
 
-# From Currency Combobox
+# From base
 tk.Label(root, text="From Currency (EUR, USD):").grid(row=1, column=0, padx=10, pady=10)
 from_currency_combobox = ttk.Combobox(root, values=['USD','EUR','AUD','CHF','CNY','GBP','JPY'])
 from_currency_combobox.grid(row=1, column=1, padx=10, pady=10)
 from_currency_combobox.current(0)
 
-# To Currency Combobox
+# To Currency
 tk.Label(root, text="To Currency (USD, CAD):").grid(row=2, column=0, padx=10, pady=10)
 to_currency_combobox = ttk.Combobox(root, values=['USD','EUR','AUD','CHF','CNY','GBP','JPY'])
 to_currency_combobox.grid(row=2, column=1, padx=10, pady=10)
 to_currency_combobox.current(0)
 
-# convert
+# Convert
 convert_button = tk.Button(root, text="Convert", command=perform_conversion)
 convert_button.grid(row=3, column=0, columnspan=2, padx=10, pady=10)
 
-# result
+# Result
 result_label = tk.Label(root, text="")
 result_label.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
 
