@@ -106,6 +106,6 @@ Contributions are welcome! Please open an issue or submit a pull request for any
 
 ## Contact
 
-For any inquiries or issues, please contact [your-email@example.com](mailto:dfyseros@icloud.com).
+For any inquiries or issues, please contact [dfyseros@icloud.com](mailto:dfyseros@icloud.com).
 
 ---
