@@ -2,7 +2,7 @@ import requests
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-API_KEY = "5dd227fc68b9656c98e5a35d2f07e222"
+API_KEY = {your_API_key}
 BASE_URL = 'http://data.fixer.io/api/latest'
 
 def get_exchange_rates():
